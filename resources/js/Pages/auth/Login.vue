@@ -105,7 +105,6 @@
   import Layout from "@/layouts/Auth.vue";
   import github from "@/assets/img/github.svg";
   import google from "@/assets/img/google.svg";
-
   export default {
     layout: Layout,
     data() {
