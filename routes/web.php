@@ -21,4 +21,9 @@ use Inertia\Inertia;
 Route::get('/', function(){
     return Inertia::render('Landing');
 });
-Route::get('auth/login', [HomeController::class, 'login']);
+Route::get('auth/login', function(){
+    return Inertia::render('auth/Login');
+});
+Route::get('auth/register', function(){
+    return Inertia::render('auth/Register');
+});

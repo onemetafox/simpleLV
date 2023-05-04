@@ -138,9 +138,9 @@
                 faster. You can change the text and images and you're good to
                 go. Just make sure you enable them first via JavaScript.
               </p>
-              <router-link to="/" class="font-bold text-blueGray-700 mt-8">
+              <inertia-link href="/" class="font-bold text-blueGray-700 mt-8">
                 Check Vue Notus!
-              </router-link>
+              </inertia-link>
             </div>
 
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">

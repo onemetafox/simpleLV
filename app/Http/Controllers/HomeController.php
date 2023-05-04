@@ -12,8 +12,4 @@ class HomeController extends Controller
         $page_content = "This is the testing of the inertia-laravel-vue3 project";
         return Inertia::render('Landing', compact('page_title', 'page_content'));
     }
-
-    public function login(){
-        return Inertia::render('auth/Login');
-    }
 }

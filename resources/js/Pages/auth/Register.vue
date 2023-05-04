@@ -110,8 +110,10 @@
 <script>
 import github from "@/assets/img/github.svg";
 import google from "@/assets/img/google.svg";
+import Layout from "@/layouts/Auth.vue";
 
 export default {
+    layout: Layout,
   data() {
     return {
       github,
