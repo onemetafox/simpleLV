@@ -7,38 +7,11 @@
 import './bootstrap';
 import { createApp, h } from 'vue';
 import { createInertiaApp, Link } from '@inertiajs/vue3'
-import { createWebHistory, createRouter } from "vue-router";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
 
-// layout
-import Auth from "@/layouts/Auth.vue";
-
-// auth Layout
-import Login from "@/Pages/auth/Login.vue";
-import Register from "@/Pages/auth/Register.vue";
-// No Layout
-import Landing from "@/Pages/Landing.Vue";
-const routes = [
-    // {
-    //     children: [
-    //         {
-    //             path: "/auth/login",
-    //             component: Login
-    //         },
-    //         {
-    //           path: "/auth/register",
-    //           component: Register,
-    //       },
-    //     ]
-    // }
-]
-
-const router = createRouter({
-    history: createWebHistory(),
-    routes,
-});
+import store from "@/stores";
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -77,6 +50,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(store)
             .component('InertiaLink', Link)
             .mount(el)
     },

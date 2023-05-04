@@ -16,14 +16,14 @@
                 class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                 type="button"
               >
-                <img alt="..." class="w-5 mr-1" :src="github" />
+                <img alt="..." class="w-5 mr-1" :src="assets.git" />
                 Github
               </button>
               <button
                 class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                 type="button"
               >
-                <img alt="..." class="w-5 mr-1" :src="google" />
+                <img alt="..." class="w-5 mr-1" :src="assets.google" />
                 Google
               </button>
             </div>
@@ -44,7 +44,7 @@
                 <input
                   type="email"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="Email"
+                  placeholder="Email" v-model="user.email"
                 />
               </div>
 
@@ -58,7 +58,7 @@
                 <input
                   type="password"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="Password"
+                  placeholder="Password" v-model="user.password"
                 />
               </div>
               <div>
@@ -110,8 +110,15 @@
     layout: Layout,
     data() {
       return {
-        github,
-        google,
+        assets:{
+          git:github,
+          google:google,          
+        },
+        user:{
+          email: "",
+          password:"",
+        }
+
       };
     },
   };
