@@ -86,7 +86,6 @@
 </template>
 <script>
 import { createPopper } from "@popperjs/core";
-import { createWebHistory, createRouter } from "vue-router";
 
 export default {
   data() {
