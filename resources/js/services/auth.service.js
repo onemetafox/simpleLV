@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { API_URL } from "../config/const.config";
 
-export default function AuthService (){
-    const login = (email, password) => {
+class AuthService {
+    login (email, password) {
         return axios.post( 
             API_URL + 'login', 
             {email:email, password:password}
@@ -16,7 +16,7 @@ export default function AuthService (){
         });
     }
 
-    const register = (user) => {
+    register (user){
         return axios.post(API_URL+'register', user).then(res =>{
             if(res.success == true){
 
@@ -26,7 +26,8 @@ export default function AuthService (){
         });
     }
 
-    const logout = () =>{
+    logout () {
         return axios.get(API_URL+logout);
     }
 }
+export default new AuthService();
