@@ -130,6 +130,7 @@ import github from "@/assets/img/github.svg";
 import google from "@/assets/img/google.svg";
 import Layout from "@/layouts/Auth.vue";
 import useValidate from '@vuelidate/core'
+import { mapState } from 'vuex';
 import { required, email, sameAs, minLength } from '@vuelidate/validators'
 
 export default {
@@ -149,13 +150,28 @@ export default {
             }
         };
     },
+    computed : mapState({
+        success : state => state.success,
+        msg : state => state.msg
+    }),
     methods:{
-        submitForm(){
-            this.v$.$validate() // checks all inputs
-            if (!this.v$.$error) {
-                
-            }
-        }
+        submitForm(user){
+            this.loading = true;
+            this.$store.dispatch("auth/login", user).then(
+                () => {
+                this.$router.push("/profile");
+                },
+                (error) => {
+                this.loading = false;
+                this.message =
+                    (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+                }
+            );
+        },
     },
     validations() {
         return {
