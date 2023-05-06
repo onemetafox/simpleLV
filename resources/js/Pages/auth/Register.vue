@@ -99,7 +99,7 @@
                                 <input
                                     id="customCheckLogin"
                                     type="checkbox"
-                                    class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                                    class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150" v-model ="user.term"
                                 />
                                 <span class="ml-2 text-sm font-semibold text-blueGray-600">
                                     I agree with the
@@ -108,6 +108,7 @@
                                     </a>
                                 </span>
                             </label>
+                            <span class="error" v-if="v$.user.term.$error"> {{ v$.user.term.$errors[0].$message }} </span>
                         </div>
 
                         <div class="text-center mt-6">
@@ -146,8 +147,10 @@ export default {
                 name:"",
                 email:"",
                 password:"",
-                cfmpwd:""
-            }
+                cfmpwd:"",
+                term: false
+            },
+            loading: false,
         };
     },
     computed : mapState({
@@ -155,22 +158,27 @@ export default {
         msg : state => state.msg
     }),
     methods:{
-        submitForm(user){
-            this.loading = true;
-            this.$store.dispatch("auth/login", user).then(
-                () => {
-                this.$router.push("/profile");
-                },
-                (error) => {
-                this.loading = false;
-                this.message =
-                    (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                    error.message ||
-                    error.toString();
-                }
-            );
+        submitForm(){
+            this.v$.$validate() // checks all inputs
+            if (!this.v$.$error) {
+                this.loading = true;
+                this.$store.dispatch("auth/register", this.user).then(
+                    (res) => {
+                        // this.$router.push("/profile");
+                    },
+                    // (error) => {
+                    //     this.loading = false;
+                    //     this.message =
+                    //         (error.response &&
+                    //         error.response.data &&
+                    //         error.response.data.message) ||
+                    //         error.message ||
+                    //         error.toString();
+                    // }
+                );
+            }else{
+                console.log(this.v$.user.cfmpwd.$error);
+            }
         },
     },
     validations() {
@@ -179,7 +187,8 @@ export default {
                 name: { required },
                 email: { required, email },
                 password: { required, minLength: minLength(6) },
-                cfmpwd: { required },
+                cfmpwd: { required, sameAsPassword : sameAs(this.user.password) },
+                term : { required }
             }
         }
     },
