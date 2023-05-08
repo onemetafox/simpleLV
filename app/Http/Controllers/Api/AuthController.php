@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Model\User;
+use App\Models\Auth;
 
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
@@ -51,8 +51,23 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
-        // print_r($request);
-        return response()->json($request, 200);
-        //$user = User::where('email', $request.email);
+        $user = Auth::where('email', $request->email)->get();
+        if(!$user){
+            $data['msg'] = 'User already registered!';
+            $data['success'] = false;
+            return response()->json($data);
+        }else{
+            $request['password'] = md5($request->password);
+            unset($request->cfmpwd);
+            $id = Auth::create((array)$request);
+            if($id){
+                $data['msg'] = "User succesfully registered!";
+                $data['success'] = true;
+            }else{
+                $data['msg'] = "Registered faild!";
+                $data['success'] = false;
+            }
+        }
+        return response()->json($data);
     }
 }
