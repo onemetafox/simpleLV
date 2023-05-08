@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Api\AuthController;
 
@@ -21,5 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::post('/register', [AuthController::class, 'register']);
 Route::post('/register', function(Request $request){
-    return Response::make('Hello World', 200)->header('Content-Type', 'text/plain');
+    print_r("This is the test of the response");
+    // return Response::make('Hello World', 200)->header('Content-Type', 'text/plain');
 });
