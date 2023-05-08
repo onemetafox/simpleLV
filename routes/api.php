@@ -20,8 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::post('/register', [AuthController::class, 'register']);
-Route::post('/register', function(Request $request){
-    print_r("This is the test of the response");
-    // return Response::make('Hello World', 200)->header('Content-Type', 'text/plain');
-});
+Route::post('/register', [AuthController::class, 'register']);
+// Route::get('/register', function(Request $request){
+//     return 'this is the tedste of api';
+//     print_r("This is the test of the response");
+//     return response()->json('Hello World', 200)->header('Content-Type', 'text/plain');
+// });

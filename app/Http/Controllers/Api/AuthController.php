@@ -52,7 +52,7 @@ class AuthController extends Controller
 
     public function register(Request $request){
         // print_r($request);
-        // return response()->json($request, 200);
+        return response()->json($request, 200);
         //$user = User::where('email', $request.email);
     }
 }
