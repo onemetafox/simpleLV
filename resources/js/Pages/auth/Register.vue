@@ -164,6 +164,14 @@ export default {
                 this.loading = true;
                 this.$store.dispatch("auth/register", this.user).then(
                     (res) => {
+                        console.log(res);
+                        if(res.success){
+                            this.$router.push('/admin/users');
+                        }else{
+                            this.$toast(res.msg, {
+                                
+                            });
+                        }
                         // this.$router.push("/profile");
                     },
                     // (error) => {

@@ -51,23 +51,23 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
-        $user = Auth::where('email', $request->email)->get();
-        if(!$user){
-            $data['msg'] = 'User already registered!';
-            $data['success'] = false;
-            return response()->json($data);
+        $data = $request->all();
+        $user = Auth::where('email', $data['email'])->get();
+        if($user){
+            $res['msg'] = 'User already registered!';
+            $res['success'] = false;
         }else{
-            $request['password'] = md5($request->password);
-            unset($request->cfmpwd);
-            $id = Auth::create((array)$request);
+            $data['password']= md5($data['password']);
+            unset($data['cfmpwd']);
+            $id = Auth::create($data);
             if($id){
-                $data['msg'] = "User succesfully registered!";
-                $data['success'] = true;
+                $res['msg'] = "User succesfully registered!";
+                $res['success'] = true;
             }else{
-                $data['msg'] = "Registered faild!";
-                $data['success'] = false;
+                $res['msg'] = "Registered faild!";
+                $res['success'] = false;
             }
         }
-        return response()->json($data);
+        return response()->json($res);
     }
 }

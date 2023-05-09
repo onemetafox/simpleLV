@@ -6,7 +6,9 @@
 
 import './bootstrap';
 import { createApp, h } from 'vue';
-import { createInertiaApp, Link } from '@inertiajs/vue3'
+import { createInertiaApp, Link } from '@inertiajs/vue3';
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
@@ -42,6 +44,24 @@ import store from "@/stores";
 //  */
 
 // app.mount('#app');
+const options = {
+    transition: "Vue-Toastification__bounce",
+    maxToasts: 20,
+    newestOnTop: true,
+    position: "top-left",
+    timeout: 5000,
+    closeOnClick: true,
+    pauseOnFocusLoss: true,
+    pauseOnHover: true,
+    draggable: true,
+    draggablePercent: 0.6,
+    showCloseButtonOnHover: false,
+    hideProgressBar: true,
+    closeButton: "button",
+    icon: true,
+    rtl: false
+};
+
 createInertiaApp({
     resolve: name => {
       const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
@@ -51,6 +71,7 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(store)
+            .use(Toast, options)
             .component('InertiaLink', Link)
             .mount(el)
     },
