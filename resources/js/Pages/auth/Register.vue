@@ -165,7 +165,11 @@ export default {
                 this.loading = true;
                 this.$store.dispatch("auth/register", this.user).then(
                     (res) => {
-                        toast.error(res.data.msg);
+                        if(res.data.success){
+                            toast.success(res.data.msg);
+                        }else{
+                            toast.error(res.data.msg);
+                        }
                     },
                 );
             }else{

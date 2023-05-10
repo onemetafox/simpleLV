@@ -53,7 +53,7 @@ class AuthController extends Controller
     public function register(Request $request){
         $data = $request->all();
         $user = Auth::where('email', $data['email'])->get();
-        if($user){
+        if(sizeof($user)){
             $res['msg'] = 'User already registered!';
             $res['success'] = false;
         }else{
