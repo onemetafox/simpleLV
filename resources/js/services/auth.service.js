@@ -2,10 +2,10 @@ import axios from 'axios';
 import { API_URL } from "../config/const.config";
 
 class AuthService {
-    login (email, password) {
+    login (user) {
         return axios.post( 
             API_URL + 'login', 
-            {email:email, password:password}
+            user
         ).then(res =>{
             if(res.success == true){
                 localStorage.setItem('user', JSON.stringify(res.data));
