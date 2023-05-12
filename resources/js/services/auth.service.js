@@ -3,10 +3,7 @@ import { API_URL } from "../config/const.config";
 
 class AuthService {
     login (user) {
-        return axios.post( 
-            API_URL + 'login', 
-            user
-        ).then(res =>{
+        return axios.post(API_URL + 'login', user).then(res =>{
             if(res.success == true){
                 localStorage.setItem('user', JSON.stringify(res.data));
             }

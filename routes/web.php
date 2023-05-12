@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Inertia\Inertia;
 
 /*
@@ -26,4 +27,7 @@ Route::get('auth/login', function(){
 });
 Route::get('auth/register', function(){
     return Inertia::render('auth/Register');
+});
+Route::middleware(['auth'])->group(function(){
+    Route::get('users', [UserController::class, 'index']);
 });

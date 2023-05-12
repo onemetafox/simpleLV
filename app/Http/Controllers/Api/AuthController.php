@@ -76,7 +76,10 @@ class AuthController extends Controller
         $user = Auth::where('email', $filter['email'])->get();
         if(sizeof($user)){
             if($user['password'] = md5($filter['password'])){
-                Session::create($request);
+                $res['msg'] = 'Successfully loggedin!';
+                $res['success'] = true;
+                $res['user'] = $user;
+                return redirect('users');
             }else{
                 $res['msg'] = "Password is incorrect!";
                 $res['success'] = false;

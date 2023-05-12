@@ -160,7 +160,7 @@ export default {
     },
     methods:{
         submitForm(){
-            this.v$.$validate() // checks all inputs
+            this.v$.$validate(); // checks all inputs
             if (!this.v$.$error) {
                 this.loading = true;
                 this.$store.dispatch("auth/register", this.user).then(

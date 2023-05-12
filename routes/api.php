@@ -21,8 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/register', [AuthController::class, 'register']);
-// Route::get('/register', function(Request $request){
-//     return 'this is the tedste of api';
-//     print_r("This is the test of the response");
-//     return response()->json('Hello World', 200)->header('Content-Type', 'text/plain');
-// });
+Route::post('/login', [AuthController::class, 'login']);
