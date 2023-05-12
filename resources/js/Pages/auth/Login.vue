@@ -111,6 +111,7 @@
     import useValidate from '@vuelidate/core'
     import { mapState } from 'vuex';
     import { required, email, sameAs, minLength } from '@vuelidate/validators'
+    import { API_URL } from "../../config/const.config";
 
     import { toast } from 'vue3-toastify';
     import 'vue3-toastify/dist/index.css';
@@ -134,7 +135,11 @@
             this.v$.$validate(); // checks all inputs
             if(!this.v$.$error){
               this.$store.dispatch('auth/login', this.user).then((res)=>{
-                console.log(res);
+                if(res.data.success){
+                  router.visit(API_URL + 'users')
+                }else{
+                  toast.error(res.data.msg);
+                }
               })
             }
           }

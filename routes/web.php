@@ -28,6 +28,7 @@ Route::get('auth/login', function(){
 Route::get('auth/register', function(){
     return Inertia::render('auth/Register');
 });
-Route::middleware(['auth'])->group(function(){
-    Route::get('users', [UserController::class, 'index']);
-});
+Route::get('users', [UserController::class, 'index']);
+// Route::middleware(['auth'])->group(function(){
+    
+// });

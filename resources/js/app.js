@@ -6,10 +6,13 @@
 
 import './bootstrap';
 import { createApp, h } from 'vue';
-import { createInertiaApp, Link } from '@inertiajs/vue3';
+import { createInertiaApp, Link, router } from '@inertiajs/vue3';
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
+
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 import store from "@/stores";
 /**
@@ -49,10 +52,14 @@ createInertiaApp({
       return pages[`./Pages/${name}.vue`]
     },
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
+        const myapp = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(store)
             .component('InertiaLink', Link)
-            .mount(el)
+            .mount(el);
+        myapp.config.globalProperties.toast = toast;
+        myapp.config.globalProperties.router = router;
+        myApp.mount(el);
+        return myApp;
     },
   })

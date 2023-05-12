@@ -79,7 +79,6 @@ class AuthController extends Controller
                 $res['msg'] = 'Successfully loggedin!';
                 $res['success'] = true;
                 $res['user'] = $user;
-                return redirect('users');
             }else{
                 $res['msg'] = "Password is incorrect!";
                 $res['success'] = false;

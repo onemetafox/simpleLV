@@ -10,6 +10,6 @@ class UserController extends Controller
 {
     public function index(){
         $users = User::all();
-        return Inertia::render('user/List', 'users');
+        return Inertia::render('user/List', compact('users'));
     }    
 }
