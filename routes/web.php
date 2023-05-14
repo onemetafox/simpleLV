@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Inertia\Inertia;
 
 /*
@@ -15,9 +16,9 @@ use Inertia\Inertia;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('/', function(){
     return Inertia::render('Landing');
 });
@@ -27,3 +28,7 @@ Route::get('auth/login', function(){
 Route::get('auth/register', function(){
     return Inertia::render('auth/Register');
 });
+Route::get('users', [UserController::class, 'index']);
+// Route::middleware(['auth'])->group(function(){
+    
+// });

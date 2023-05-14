@@ -134,7 +134,12 @@ import useValidate from '@vuelidate/core'
 import { mapState } from 'vuex';
 import { required, email, sameAs, minLength } from '@vuelidate/validators'
 
+
+// import { toast } from 'vue3-toastify';
+// import 'vue3-toastify/dist/index.css';
+
 export default {
+    
     layout: Layout,
     data() {
         return {
@@ -144,37 +149,30 @@ export default {
                 google: google
             },
             user:{
-                name:"",
-                email:"",
-                password:"",
-                cfmpwd:"",
+                name:"admin",
+                email:"admin@gmail.com",
+                password:"123456",
+                cfmpwd:"123456",
                 term: false
             },
             loading: false,
         };
     },
-    computed : mapState({
-        success : state => state.success,
-        msg : state => state.msg
-    }),
     methods:{
         submitForm(){
-            this.v$.$validate() // checks all inputs
+            this.v$.$validate(); // checks all inputs
             if (!this.v$.$error) {
                 this.loading = true;
                 this.$store.dispatch("auth/register", this.user).then(
                     (res) => {
-                        // this.$router.push("/profile");
+                        if(res.data.success){
+                            this.$toast.success(res.data.msg);
+                        }else{
+                            // toast("hello", { role: "custom-role",} as T);
+                            // this.$toast.error(res.data.msg);
+                            toast.error(res.msg);
+                        }
                     },
-                    // (error) => {
-                    //     this.loading = false;
-                    //     this.message =
-                    //         (error.response &&
-                    //         error.response.data &&
-                    //         error.response.data.message) ||
-                    //         error.message ||
-                    //         error.toString();
-                    // }
                 );
             }else{
                 console.log(this.v$.user.cfmpwd.$error);
