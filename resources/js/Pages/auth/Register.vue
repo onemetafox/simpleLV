@@ -135,8 +135,8 @@ import { mapState } from 'vuex';
 import { required, email, sameAs, minLength } from '@vuelidate/validators'
 
 
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
+// import { toast } from 'vue3-toastify';
+// import 'vue3-toastify/dist/index.css';
 
 export default {
     
@@ -166,9 +166,11 @@ export default {
                 this.$store.dispatch("auth/register", this.user).then(
                     (res) => {
                         if(res.data.success){
-                            this.toast.success(res.data.msg);
+                            this.$toast.success(res.data.msg);
                         }else{
-                            this.toast.error(res.data.msg);
+                            // toast("hello", { role: "custom-role",} as T);
+                            // this.$toast.error(res.data.msg);
+                            toast.error(res.msg);
                         }
                     },
                 );

@@ -11,10 +11,11 @@ import { createInertiaApp, Link, router } from '@inertiajs/vue3';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
 
-import { toast } from 'vue3-toastify';
+import  Vue3Toasity, { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 import store from "@/stores";
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -55,11 +56,11 @@ createInertiaApp({
         const myapp = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(store)
+            .use(Vue3Toasity)
             .component('InertiaLink', Link)
             .mount(el);
         myapp.config.globalProperties.toast = toast;
-        myapp.config.globalProperties.router = router;
-        myApp.mount(el);
-        return myApp;
+        myapp.mount(el);
+        return myapp;
     },
   })
