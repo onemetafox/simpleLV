@@ -136,7 +136,7 @@
             if(!this.v$.$error){
               this.$store.dispatch('auth/login', this.user).then((res)=>{
                 if(res.data.success){
-                  router.visit(API_URL + 'users')
+                  this.$route.visit(API_URL + 'users');
                 }else{
                   toast.error(res.data.msg);
                 }
