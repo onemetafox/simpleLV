@@ -134,10 +134,6 @@ import useValidate from '@vuelidate/core'
 import { mapState } from 'vuex';
 import { required, email, sameAs, minLength } from '@vuelidate/validators'
 
-
-// import { toast } from 'vue3-toastify';
-// import 'vue3-toastify/dist/index.css';
-
 export default {
     
     layout: Layout,
@@ -168,9 +164,7 @@ export default {
                         if(res.data.success){
                             this.$toast.success(res.data.msg);
                         }else{
-                            // toast("hello", { role: "custom-role",} as T);
-                            // this.$toast.error(res.data.msg);
-                            toast.error(res.msg);
+                            this.$toast.error(res.data.msg);
                         }
                     },
                 );

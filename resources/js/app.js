@@ -11,7 +11,7 @@ import { createInertiaApp, Link, router } from '@inertiajs/vue3';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
 
-import  Vue3Toasity, { toast } from 'vue3-toastify';
+import  { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 import store from "@/stores";
@@ -47,20 +47,21 @@ import store from "@/stores";
 
 // app.mount('#app');
 
-createInertiaApp({
+  createInertiaApp({
     resolve: name => {
       const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
       return pages[`./Pages/${name}.vue`]
     },
     setup({ el, App, props, plugin }) {
-        const myapp = createApp({ render: () => h(App, props) })
+        const app = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(store)
-            .use(Vue3Toasity)
             .component('InertiaLink', Link)
-            .mount(el);
-        myapp.config.globalProperties.toast = toast;
-        myapp.mount(el);
-        return myapp;
+        app.config.globalProperties.$route = router;
+        app.config.globalProperties.$toast = toast;
+        app.mount(el);
+        return app;
     },
-  })
+  });
+
+  
