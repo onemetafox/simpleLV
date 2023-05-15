@@ -20,10 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/', function(){
-    return Inertia::render('Landing');
+    $page_info['title'] = 'Landing Page';
+    $page_info['description'] = 'This is the landing page';
+    return Inertia::render('Landing', compact('page_info'));
 });
 Route::get('auth/login', function(){
-    return Inertia::render('auth/Login');
+    $page_info['title'] = 'Login Page';
+    $page_info['description'] = 'This is the login page';
+    return Inertia::render('auth/Login', compact('title'));
 });
 Route::get('auth/register', function(){
     return Inertia::render('auth/Register');
