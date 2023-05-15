@@ -75,12 +75,8 @@
 
         <ul class="md:flex-col md:min-w-full flex flex-col list-none">
           <li class="items-center">
-            <intertia-link
-              href="/admin/dashboard"
-            >
+            <intertia-link href="/admin/dashboard">
               <a
-                :href="href"
-                @click="navigate"
                 class="text-xs uppercase py-3 font-bold block"
                 :class="[
                   isActive
@@ -236,7 +232,6 @@
     </div>
   </nav>
 </template>
-); }
 
 <script>
 import NotificationDropdown from "@/components/Dropdowns/NotificationDropdown.vue";
