@@ -17,7 +17,6 @@ import 'vue3-toastify/dist/index.css';
 import store from "@/stores";
 
 createInertiaApp({
-    title: (page_info) => `${page_info['title']}`,
     resolve: name => {
         const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
         return pages[`./Pages/${name}.vue`]

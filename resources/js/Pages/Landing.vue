@@ -1,7 +1,4 @@
 <template>
-    <Head>
-        <title>{{$page_info['title']}}</title>
-    </Head>
     <div>
       <navbar />
       <main>
@@ -601,7 +598,6 @@
 
 <script setup>
     import { Link, Head } from '@inertiajs/vue3';
-    defineProps({ page_title: 'Title test', page_content: Object });
 </script>
 <script>
     import Navbar from "@/components/Navbars/AuthNavbar.vue";
@@ -621,6 +617,7 @@
             team4,
             };
         },
+        
         components: {
             Navbar,
             FooterComponent,
