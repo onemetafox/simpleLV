@@ -97,21 +97,9 @@
 
     export default {
         layout : Layout,
-        data() {
-            return {
-                
-            };
-        },
         components: {
             TableDropdown,
         },
-        props: {
-            color: {
-                default: "light",
-                validator: function (value) {
-                    return ["light", "dark"].indexOf(value) !== -1;
-                },
-            },
-        },
+        
     };
 </script>
