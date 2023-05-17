@@ -12,6 +12,6 @@ class UserController extends Controller
         $users = User::all();
         $page_info['title'] = 'Users List';
         $page_info['active_menu'] = 'users';
-        return Inertia::render('user/List', compact('users','page_info'));
+        return Inertia::render('user/List', ['users' => $users])->withViewData(['meta' => $page_info]);;
     }    
 }

@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('/', function(){
     $page_info['title'] = 'Landing Page';
     $page_info['description'] = 'This is the landing page';
-    return Inertia::render('Landing', compact('page_info'));
+    return inertia('Landing', ["page_info"=>$page_info])->withViewData(['page_info'=>$page_info]);
 });
 Route::get('auth/login', function(){
     $page_info['title'] = 'Login Page';
