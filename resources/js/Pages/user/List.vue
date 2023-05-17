@@ -1,14 +1,12 @@
 <template>
-    <Head title="Users" />
-    <div v-for="user in users" :key="user.id">
-      <Link :href="`/users/${user.id}`">
-        {{ user.name }}
-      </Link>
-      <div>{{ user.email }}</div>
-    </div>
-
+    <li v-for="user in users">
+        {{ user.name }} ::: {{ user.email }}
+    </li>
 </template>
 
+<script setup>
+    defineProps({ users: Object })
+</script>
 <script>
     import Layout from "@/layouts/Admin.vue";
 
