@@ -14,5 +14,13 @@ class UserController extends Controller
         $page_info['active_menu'] = 'users';
         $page_info['detail'] = "Users Page";
         return Inertia::render('user/List', ['users' => $users, 'page_info' =>$page_info]);
-    }    
+    }
+
+    public function show($id){
+        $user = User::find($id);
+        $page_info["title"] = "User Edit";
+        $page_info['active_menu'] = 'users';
+        $page_info['detail'] = "User Edit Page";
+        return Inertia::render('user/Edit', ['user'=> $user, 'page_info' => $page_info]);
+    }
 }

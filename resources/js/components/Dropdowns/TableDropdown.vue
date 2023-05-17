@@ -17,7 +17,7 @@
       }"
     >
       <a
-        href="javascript:void(0);"
+        :href="'/users/get/' + user.id"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
         Edit

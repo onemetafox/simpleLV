@@ -33,6 +33,7 @@ Route::get('auth/register', function(){
     return Inertia::render('auth/Register');
 });
 Route::get('users', [UserController::class, 'index']);
+Route::get('users/get/{id}', [UserController::class, 'show']);
 // Route::middleware(['auth'])->group(function(){
     
 // });
