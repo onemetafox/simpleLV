@@ -16,32 +16,32 @@
                 <thead>
                     <tr>
                         <th 
-                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-leftbg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
                             No
                         </th>
                         <th
-                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-leftbg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
                             User Name
                         </th>
                         <th
-                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-leftbg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
                             User Email
                         </th>
                         <th
-                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-leftbg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
                             Created Date
                         </th>
                         <th
-                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-leftbg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         >
                             Status
                         </th>
                         <th
-                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-leftbg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
                         ></th>
                     </tr>
                 </thead>
@@ -50,7 +50,7 @@
                         <td
                             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
                         >
-                            <span class="ml-3 font-bold text-blueGray-600"> {{index +1}}</span>
+                            {{index +1}}
                         </td>
                         <td
                             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
@@ -60,22 +60,25 @@
                         <td
                             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
                         >
-                            <span class="ml-3 font-bold text-blueGray-600">{{user.email}}</span>
+                            {{user.email}}
                         </td>
                         <td
                             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
                         >
-                            <span class="ml-3 font-bold text-blueGray-600"> {{user.created_date}} </span>
-                            
+                            {{user.created_at}} 
                         </td>
-                        <td>
-                            <span class="ml-3 font-bold text-blueGray-600"> status </span>
-                            
+                        <td v-if = "user.status == 2">
+                            <i class="fas fa-circle text-emerald-500 mr-2"></i>
+                            Approved
+                        </td>
+                        <td v-else>
+                            <i class="fas fa-circle text-red-500 mr-2"></i>
+                            Waiting
                         </td>
                         <td
                             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
                         >
-                            <table-dropdown />
+                            <table-dropdown :user = "user"/>
                         </td>
                     </tr>
                 </tbody>

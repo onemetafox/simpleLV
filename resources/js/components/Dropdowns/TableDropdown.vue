@@ -20,23 +20,32 @@
         href="javascript:void(0);"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
-        Action
+        Edit
       </a>
       <a
         href="javascript:void(0);"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
-        Another action
+        Delete
       </a>
-      <a
+      <a v-if="user.status == 1"
         href="javascript:void(0);"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
-        Something else here
+        Allow
+      </a>
+      <a v-else
+        href="javascript:void(0);"
+        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+      >
+        Decline
       </a>
     </div>
   </div>
 </template>
+<script setup>
+  defineProps({user : Object})
+</script>
 <script>
 import { createPopper } from "@popperjs/core";
 
