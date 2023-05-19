@@ -36,9 +36,8 @@
                                 Username
                             </label>
                             <input
-                                type="text"
+                                type="text" v-model="user.name"
                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                value="lucky.jesse"
                             />
                             </div>
                         </div>
@@ -53,7 +52,7 @@
                             <input
                                 type="email"
                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                value="{{user.email}}"
+                                v-model="user.email"
                             />
                             </div>
                         </div>
@@ -101,7 +100,15 @@
 import Layout from "@/layouts/Admin.vue";
 import {Link} from "@inertiajs/vue3";
 export default {
-    layout : Layout
+    layout : Layout,
+    data(){
+        return {
+            user : {
+                name : this.user.name,
+                email : this.user.email
+            }
+        }
+    }
     
 };
 </script>
