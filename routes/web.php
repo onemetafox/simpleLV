@@ -27,7 +27,7 @@ Route::get('/', function(){
 Route::get('auth/login', function(){
     $page_info['title'] = 'Login Page';
     $page_info['description'] = 'This is the login page';
-    return Inertia::render('auth/Login', compact('title'));
+    return Inertia::render('auth/Login', ['page_info'=>$page_info]);
 });
 Route::get('auth/register', function(){
     return Inertia::render('auth/Register');

@@ -16,12 +16,12 @@
         block: dropdownPopoverShow,
       }"
     >
-      <a
+      <Link
         :href="'/users/get/' + user.id"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
         Edit
-      </a>
+      </Link>
       <a
         href="javascript:void(0);"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
@@ -48,7 +48,7 @@
 </script>
 <script>
 import { createPopper } from "@popperjs/core";
-
+import {Link} from "@inertiajs/vue3";
 export default {
   data() {
     return {
