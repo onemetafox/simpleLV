@@ -101,9 +101,6 @@
 import Layout from "@/layouts/Admin.vue";
 import {Link} from "@inertiajs/vue3";
 export default {
-    component:{
-        Link
-    },
     layout : Layout
     
 };
